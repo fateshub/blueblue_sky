@@ -1,0 +1,180 @@
+$main: linear-gradient(20deg, rgba(96, 154, 172, 0.356) , rgba(0, 0, 200, 0) );
+$secondB:linear-gradient(45deg, rgba(248, 202, 159, 0.760) , rgba(238, 225, 153, 0.455) );;
+$maintext: black;
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background:$main ;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+body{
+  background-size: cover;
+  font-family: 'Nunito', sans-serif;
+  color: $maintext;
+  margin: 0;
+ padding: 0;
+ overflow: hidden;
+}
+
+
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  background:$secondB ;
+  border-radius: 10px;
+  height: 35rem;
+  width: 30rem;
+  h2{
+    font-size: 8rem;
+  }
+}
+.cardinfo{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(205, 218, 255);
+  h2{
+   position: absolute;
+   right: 10px;
+   top: -100px;
+
+  }
+  p{
+    position: absolute;
+    left: 10px;
+    top: 100px
+  }
+  h1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10ch;
+    position: absolute;
+    left: 8px;
+    top: 60px
+  }
+}
+
+
+
+
+.container {
+  position: absolute;
+  margin: auto;
+  top: 20px;
+  left: 20px;
+  width: 15rem;
+  height: 100px;
+  .search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: $maintext;
+    border-radius: 20px;
+    transition: all 1s;
+    z-index: 4;
+    &:hover {
+      cursor: pointer;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 25px;
+      height: 2px;
+      background: white;
+      transform: rotate(90deg);
+      transition: all .5s;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 25px;
+      height: 2px;
+      background: white;
+      transition: all .5s;
+    }
+  }
+  input {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: $maintext;
+    color: white;
+    padding: 0 80px 0 20px;
+    border-radius: 20px;
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      width: 15rem;
+      opacity: 1;
+      cursor: text;
+    }
+    &:focus ~ .search {
+      right: -25rem;
+      background: #151515;
+      z-index: 6;
+      &::before {
+        top: 0;
+        left: 0;
+        width: 25px;
+        transform: rotate(45deg);
+
+      }
+      &::after {
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 2px;
+        border: none;
+        background: white;
+        border-radius: 0;
+        transform: rotate(-45deg);
+      }
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
+  }
+}
+
+.Logo{
+  position: fixed;
+  width: 100px;
+  top: 20px;
+  right: 20px;
+}
