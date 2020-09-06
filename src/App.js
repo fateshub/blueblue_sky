@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (debouncedValue) {
-      let url = `http://api.openweathermap.org/data/2.5/weather?q=${debouncedValue}&units=imperial&APPID=${process.env.REACT_APP_KEY}`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${debouncedValue}&units=imperial&APPID=${process.env.REACT_APP_KEY}`;
       axios
         .get(url)
         .then((response) => {
