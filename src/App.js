@@ -5,6 +5,7 @@ import Logo from "./Assets/Logo.svg";
 import ReactAnimatedWeather from "react-animated-weather";
 import Jump from "react-reveal/Jump";
 const axios = require("axios");
+require('dotenv').config()
 
 const defaults = {
   color: "black",
@@ -33,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (debouncedValue) {
-      let url = `http://api.openweathermap.org/data/2.5/weather?q=${debouncedValue}&units=imperial&APPID=`;
+      let url = `http://api.openweathermap.org/data/2.5/weather?q=${debouncedValue}&units=imperial&APPID=${process.env.REACT_APP_KEY}`;
       axios
         .get(url)
         .then((response) => {
