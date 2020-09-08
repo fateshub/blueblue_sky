@@ -65,7 +65,7 @@ function App() {
           />
           <div className="search"></div>
         </div>
-        {!weather.show ? (
+        {weather.show ? (
           <Jump>
             <div className="card">
               <ReactAnimatedWeather
