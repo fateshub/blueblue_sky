@@ -21,7 +21,7 @@ function App() {
     name: "Llanfairpwllgwyngyll",
     main: "da",
     description: " looks god",
-    temp: 42,
+    temp: 100,
   });
 
   const [, ] = useDebounce(
@@ -65,7 +65,7 @@ function App() {
           />
           <div className="search"></div>
         </div>
-        {weather.show ? (
+        {!weather.show ? (
           <Jump>
             <div className="card">
               <ReactAnimatedWeather
