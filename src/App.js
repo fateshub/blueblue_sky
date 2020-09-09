@@ -76,9 +76,11 @@ function App() {
           <Jump>
             <div className="card">
            <ReactAnimatedWeather
-                icon={weather.icon === "Clear" ? "CLEAR_DAY" 
-                : weather.icon === "Atmosphere " ? "FOG"  
-                 : weather.icon === "Clouds" ? "CLOUDY"  : weather.icon === "Snow" ? "SNOW"  : "RAIN"}
+                icon={weather.icon === "Clear" ? "CLEAR_DAY"
+                : weather.icon === "Rain" ? "RAIN"  
+                : weather.icon === "Drizzle" ? "RAIN"  
+                : weather.icon === "Thunderstorm" ? "RAIN"  
+                 : weather.icon === "Clouds" ? "CLOUDY"  : weather.icon === "Snow" ? "SNOW"  : "FOG"}
                 color={defaults.color}
                 size={defaults.size}
                 animate={defaults.animate}
