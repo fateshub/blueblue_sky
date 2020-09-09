@@ -14,6 +14,9 @@ const defaults = {
 };
 
 function App() {
+
+
+
   const [debouncedValue, setDebouncedValue] = useState("");
   const [city, updateCity] = useState();
   const [weather, getWeather] = useState({
@@ -41,8 +44,8 @@ function App() {
           let data = {
             show: true,
             name: response.data.name,
-            main: response.data.weather.main,
-            description: response.data.weather.description,
+            icon: response.data.weather[0].main,
+            description: response.data.weather[0].description,
             temp: Math.round(response.data.main.temp),
           };
           getWeather(data);
@@ -52,6 +55,10 @@ function App() {
         });
     }
   }, [debouncedValue]);
+  
+
+
+
 
   return (
     <>
@@ -68,12 +75,14 @@ function App() {
         {weather.show ? (
           <Jump>
             <div className="card">
-              <ReactAnimatedWeather
-                icon="CLEAR_DAY"
+           <ReactAnimatedWeather
+                icon={weather.icon === "Clear" ? "CLEAR_DAY" 
+                : weather.icon === "Atmosphere " ? "FOG"  
+                 : weather.icon === "Clouds" ? "CLOUDY"  : weather.icon === "Snow" ? "SNOW"  : "RAIN"}
                 color={defaults.color}
                 size={defaults.size}
                 animate={defaults.animate}
-              />{" "}
+              /> 
               <div className="cardinfo">
                 <h1>{weather.name} </h1>
                 <p>{weather.description}</p>
