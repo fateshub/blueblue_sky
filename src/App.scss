@@ -4,14 +4,15 @@ $maintext: black;
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 .App {
+  display: flex;
   text-align: center;
   width: 100vw;
   height: 100vh;
   background:$main ;
-  display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 body{
@@ -20,48 +21,7 @@ body{
   color: $maintext;
   margin: 0;
  padding: 0;
- overflow: hidden;
 }
-
-
-.card{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  background:$secondB ;
-  border-radius: 10px;
-  height: 35rem;
-  width: 30rem;
-  h2{
-    font-size: 6rem;
-  }
-}
-.cardinfo{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(205, 218, 255);
-  h2{
-   position: absolute;
-   right: 10px;
-   top: -50px;
-
-  }
-  p{
-    position: absolute;
-    left: 10px;
-    top: 100px
-  }
-  h1{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 10ch;
-    position: absolute;
-    left: 8px;
-    top: 60px
-  }
-}
-
-
-
 
 .container {
   position: absolute;
@@ -178,3 +138,46 @@ body{
   top: 20px;
   right: 20px;
 }
+
+
+.card-list {
+  display: flex;
+  padding: 10rem;
+  margin: 3rem;
+  align-items: center;
+  overflow: scroll;
+    &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+  }
+  &::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#17141d 0,#17141d);
+  }
+}
+
+.card {
+  height: 30rem;
+  width: 20rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background:$secondB;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  scroll-snap-align: start;
+  clear: both;
+  position: relative;
+}
+
+
+
+
+
+
+
+

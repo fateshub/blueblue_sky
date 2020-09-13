@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(20deg, rgba(96, 154, 172, 0.356), rgba(0, 0, 200, 0));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body {
+  background-size: cover;
+  font-family: 'Nunito', sans-serif;
+  color: black;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.card {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: linear-gradient(45deg, rgba(248, 202, 159, 0.76), rgba(238, 225, 153, 0.455));
+  border-radius: 10px;
+  height: 35rem;
+  width: 30rem;
+}
+
+.card h2 {
+  font-size: 6rem;
+}
+
+.cardinfo {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #cddaff;
+}
+
+.cardinfo h2 {
+  position: absolute;
+  right: 10px;
+  top: -50px;
+}
+
+.cardinfo p {
+  position: absolute;
+  left: 10px;
+  top: 100px;
+}
+
+.cardinfo h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 10ch;
+  position: absolute;
+  left: 8px;
+  top: 60px;
+}
+
+.container {
+  position: absolute;
+  margin: auto;
+  top: 20px;
+  left: 20px;
+  width: 15rem;
+  height: 100px;
+}
+
+.container .search {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background: black;
+  border-radius: 20px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  z-index: 4;
+}
+
+.container .search:hover {
+  cursor: pointer;
+}
+
+.container .search::before {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background: white;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container .search::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background: white;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.container input {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  background: black;
+  color: white;
+  padding: 0 80px 0 20px;
+  border-radius: 20px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  opacity: 0;
+  z-index: 5;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+}
+
+.container input:hover {
+  cursor: pointer;
+}
+
+.container input:focus {
+  width: 15rem;
+  opacity: 1;
+  cursor: text;
+}
+
+.container input:focus ~ .search {
+  right: -25rem;
+  background: #151515;
+  z-index: 6;
+}
+
+.container input:focus ~ .search::before {
+  top: 0;
+  left: 0;
+  width: 25px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.container input:focus ~ .search::after {
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background: white;
+  border-radius: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.container input::-webkit-input-placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+.container input:-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+.container input::-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+.container input::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+.Logo {
+  position: fixed;
+  width: 100px;
+  top: 20px;
+  right: 20px;
+}
+/*# sourceMappingURL=App.css.map */

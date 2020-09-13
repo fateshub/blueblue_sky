@@ -19,14 +19,9 @@ function App() {
 
   const [debouncedValue, setDebouncedValue] = useState("");
   const [city, updateCity] = useState();
-  const [weather, getWeather] = useState({
-    show: false,
-    name: "Llanfairpwllgwyngyll",
-    main: "da",
-    description: " looks god",
-    temp: 100,
-  });
-
+  const [weather, getWeather] = useState([]);
+  const [empty, changestate] = useState( false
+  );
   const [, ] = useDebounce(
     () => {
       setDebouncedValue(city);
@@ -41,6 +36,7 @@ function App() {
       axios
         .get(url)
         .then((response) => {
+          let list =[]
           let data = {
             show: true,
             name: response.data.name,
@@ -48,12 +44,16 @@ function App() {
             description: response.data.weather[0].description,
             temp: Math.round(response.data.main.temp),
           };
-          getWeather(data);
+
+  list = [...weather, data]
+          getWeather(list);
+          changestate(true)
         })
         .catch((error) => {
           console.log(error);
         });
     }
+    // eslint-disable-next-line
   }, [debouncedValue]);
   
 
@@ -72,26 +72,28 @@ function App() {
           />
           <div className="search"></div>
         </div>
-        {weather.show ? (
-          <Jump>
+        {empty ? (
+        <section className="card-list">
+       { weather.map((data) => (  <Jump>
             <div className="card">
            <ReactAnimatedWeather
-                icon={weather.icon === "Clear" ? "CLEAR_DAY"
-                : weather.icon === "Rain" ? "RAIN"  
-                : weather.icon === "Drizzle" ? "RAIN"  
-                : weather.icon === "Thunderstorm" ? "RAIN"  
-                 : weather.icon === "Clouds" ? "CLOUDY"  : weather.icon === "Snow" ? "SNOW"  : "FOG"}
+                icon={data.icon === "Clear" ? "CLEAR_DAY"
+                : data.icon === "Rain" ? "RAIN"  
+                : data.icon === "Drizzle" ? "RAIN"  
+                : data.icon === "Thunderstorm" ? "RAIN"  
+                 : data.icon === "Clouds" ? "CLOUDY"  : data.icon === "Snow" ? "SNOW"  : "FOG"}
                 color={defaults.color}
                 size={defaults.size}
                 animate={defaults.animate}
               /> 
               <div className="cardinfo">
-                <h1>{weather.name} </h1>
-                <p>{weather.description}</p>
-                <h2> {weather.temp}F</h2>
+                <h1>{data.name} </h1>
+                <p>{data.description}</p>
+                <h2> {data.temp}F</h2>
               </div>
             </div>
-          </Jump>
+          </Jump>))}
+          </section>
         ) : (
           <>
             <h1>Click + do add a city</h1>
