@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     if (debouncedValue) {
-     let url = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_CITY}=${debouncedValue}`
+     let url = `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_CITY}=${debouncedValue}`
       axios
         .get(url)
         .then((response) => {
