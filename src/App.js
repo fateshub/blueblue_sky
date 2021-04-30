@@ -4,6 +4,8 @@ import "./App.scss";
 import Logo from "./Assets/Logo.svg";
 import ReactAnimatedWeather from "react-animated-weather";
 import Jump from "react-reveal/Jump";
+import Fade from 'react-reveal/Fade';
+
 const axios = require("axios");
 require('dotenv').config()
 
@@ -13,18 +15,21 @@ const defaults = {
   animate: true,
 };
 
+      
 function App() {
 
 
 
   const [debouncedValue, setDebouncedValue] = useState("");
   const [city, updateCity] = useState();
+  const [cityPick, updateCityPick] = useState();
   const [weather, getWeather] = useState([]);
   const [empty, changestate] = useState( false
   );
   const [, ] = useDebounce(
     () => {
       setDebouncedValue(city);
+
     },
     2000,
     [city]
@@ -32,22 +37,26 @@ function App() {
 
   useEffect(() => {
     if (debouncedValue) {
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${debouncedValue}&units=imperial&APPID=${process.env.REACT_APP_KEY}`;
+     let url = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${REACT_APP_CITY}=${debouncedValue}`
       axios
         .get(url)
         .then((response) => {
-          let list =[]
-          let data = {
+          let list = response.data
+          console.log(list)
+          updateCityPick(list.slice(0,3))
+          console.log(list[0].LocalizedName)
+
+         /* let data = {
             show: true,
             name: response.data.name,
             icon: response.data.weather[0].main,
             description: response.data.weather[0].description,
             temp: Math.round(response.data.main.temp),
-          };
+          };*/
 
-  list = [...weather, data]
-          getWeather(list);
-          changestate(true)
+  //list = [...weather, data]
+         // getWeather(list);
+         // changestate(true)
         })
         .catch((error) => {
           console.log(error);
@@ -56,6 +65,33 @@ function App() {
     // eslint-disable-next-line
   }, [debouncedValue]);
   
+
+  useEffect(() => {
+   
+  }, [])
+
+
+    function apicall(city){
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${REACT_APP_KEY}`;
+            axios
+              .get(url)
+              .then((response) => {
+                let list = []
+                let data = {
+                  show: true,
+                  name: response.data.name,
+                  icon: response.data.weather[0].main,
+                  description: response.data.weather[0].description,
+                  temp: Math.round(response.data.main.temp),
+                };
+      
+        list = [...weather, data]
+                getWeather(list);
+                changestate(true)
+              })
+              updateCityPick([])
+            }
+ 
 
 
 
@@ -70,7 +106,12 @@ function App() {
             placeholder="Search For City..."
             onChange={(e) => updateCity(e.target.value)}
           />
+
           <div className="search"></div>
+          {cityPick ? (<div className="Sugg">{cityPick.map((city) => (  
+            <Fade top>
+            <div  onClick={()=>{apicall(city.LocalizedName)}} className="cities">{city.LocalizedName} , {city.Country.LocalizedName}</div></Fade>
+          ))}</div>): <h1> </h1>}
         </div>
         {empty ? (
         <section className="card-list">

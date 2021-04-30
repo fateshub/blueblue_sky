@@ -146,6 +146,7 @@ body{
   margin: 3rem;
   align-items: center;
   overflow: scroll;
+  overflow-y: hidden;
     &::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -177,7 +178,28 @@ body{
 
 
 
+.Sugg{
+  visibility: hidden;
+  position: relative;
+  top: 100px;
+ display: flex;
+ flex-direction:column
+
+}
+
+
+.container:hover  .Sugg{
+  visibility:visible
+}
 
 
 
 
+
+.cities{
+  background: #151515 ;
+  color: white;
+  padding: 5px;
+ border-radius: 3px;
+ margin-top: 20px;
+}
