@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     if (debouncedValue) {
-     let url = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${REACT_APP_CITY}=${debouncedValue}`
+     let url = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_CITY}=${debouncedValue}`
       axios
         .get(url)
         .then((response) => {
@@ -72,7 +72,7 @@ function App() {
 
 
     function apicall(city){
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${REACT_APP_KEY}`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${process.env.REACT_APP_KEY}`;
             axios
               .get(url)
               .then((response) => {
